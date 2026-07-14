@@ -10,12 +10,19 @@ const GooeyNav = ({
   timeVariance = 300,
   colors = [1, 2, 3, 1, 2, 3, 1, 4],
   initialActiveIndex = 0,
+  activeIndex: activeIndexProp,
+  onItemClick,
 }) => {
   const containerRef = useRef(null);
   const navRef = useRef(null);
   const filterRef = useRef(null);
   const textRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
+  const currentActiveIndex = activeIndexProp ?? activeIndex;
+
+  useEffect(() => {
+    if (activeIndexProp !== undefined) setActiveIndex(activeIndexProp);
+  }, [activeIndexProp]);
 
   const noise = (n = 1) => n / 2 - Math.random() * n;
 
@@ -95,10 +102,10 @@ const GooeyNav = ({
     textRef.current.innerText = element.innerText;
   };
 
-  const handleClick = (e, index) => {
+  const handleClick = (e, index, item) => {
     const liEl = e.currentTarget;
 
-    if (activeIndex === index) return;
+    e.preventDefault();
 
     setActiveIndex(index);
     updateEffectPosition(liEl);
@@ -117,15 +124,17 @@ const GooeyNav = ({
     if (filterRef.current) {
       makeParticles(filterRef.current);
     }
+
+    onItemClick?.(item);
   };
 
-  const handleKeyDown = (e, index) => {
+  const handleKeyDown = (e, index, item) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       const liEl = e.currentTarget.parentElement;
 
       if (liEl) {
-        handleClick({ currentTarget: liEl }, index);
+        handleClick({ currentTarget: liEl, preventDefault: () => {} }, index, item);
       }
     }
   };
@@ -133,7 +142,7 @@ const GooeyNav = ({
   useEffect(() => {
     if (!navRef.current || !containerRef.current) return undefined;
 
-    const activeLi = navRef.current.querySelectorAll('li')[activeIndex];
+    const activeLi = navRef.current.querySelectorAll('li')[currentActiveIndex];
 
     if (activeLi) {
       updateEffectPosition(activeLi);
@@ -141,7 +150,7 @@ const GooeyNav = ({
     }
 
     const resizeObserver = new ResizeObserver(() => {
-      const currentActiveLi = navRef.current?.querySelectorAll('li')[activeIndex];
+      const currentActiveLi = navRef.current?.querySelectorAll('li')[currentActiveIndex];
 
       if (currentActiveLi) {
         updateEffectPosition(currentActiveLi);
@@ -151,18 +160,18 @@ const GooeyNav = ({
     resizeObserver.observe(containerRef.current);
 
     return () => resizeObserver.disconnect();
-  }, [activeIndex]);
+  }, [currentActiveIndex]);
 
   return (
     <div className="gooey-nav-container" ref={containerRef}>
       <nav aria-label="Primary navigation">
         <ul ref={navRef}>
           {items.map((item, index) => (
-            <li key={item.href} className={activeIndex === index ? 'active cursor-target' : 'cursor-target'}>
+            <li key={item.href} className={currentActiveIndex === index ? 'active cursor-target' : 'cursor-target'}>
               <a
                 href={item.href}
-                onClick={(e) => handleClick(e, index)}
-                onKeyDown={(e) => handleKeyDown(e, index)}
+                onClick={(e) => handleClick(e, index, item)}
+                onKeyDown={(e) => handleKeyDown(e, index, item)}
               >
                 {item.label}
               </a>

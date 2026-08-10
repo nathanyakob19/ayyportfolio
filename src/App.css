@@ -14,9 +14,10 @@ h2 { font-size: clamp(1.5rem, 3vw, 2.4rem); line-height: 1; margin-bottom: 1rem;
 .hero-introduction, .hero-role { max-width: 520px; }
 .hero-role { border-left: 1px solid rgb(248 245 238 / .2); padding-left: clamp(2rem, 5vw, 5rem); }
 .hero-role h2 { color: #ffd166; font-size: clamp(2.5rem, 5vw, 5rem); letter-spacing: -.05em; line-height: .94; margin-bottom: 1.25rem; }
+.hero-role-intro { color: #f8f5ee; font-size: clamp(1.05rem, 2vw, 1.3rem); font-weight: 800; letter-spacing: .01em; margin-bottom: .8rem; }
 .hero-copy, .page-lead { color: #d6d1c6; font-size: clamp(1rem, 2vw, 1.25rem); line-height: 1.7; max-width: 650px; }
 .hero-copy { margin-bottom: 1.25rem; }
-.typing-role { align-items: center; color: #d6d1c6; display: flex; flex-direction: column; font-size: 1rem; gap: .35rem; margin: 0 0 2.2rem; }
+.typing-role { color: #d6d1c6; display: flex; font-size: 1rem; margin: 0 0 1rem; }
 .typing-role strong { color: #ffd166; font-size: clamp(1.5rem, 3vw, 2.35rem); min-height: 1.2em; }
 .typing-role i { border-right: 2px solid #ffd166; margin-left: 3px; animation: blink .8s step-end infinite; }
 .home-section { margin: 0 auto; max-width: 1120px; padding: clamp(3.5rem, 7vw, 6rem) clamp(1.25rem, 4vw, 3rem); }

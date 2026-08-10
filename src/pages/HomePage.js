@@ -15,22 +15,19 @@ export default function HomePage() {
       <section className="hero-section page-enter" aria-labelledby="hero-title">
         <div className="hero-content">
           <div className="hero-introduction">
-            <p className="eyebrow">Game development portfolio</p>
             <h1 id="hero-title">Hello, I&apos;m <span>Abhinav</span></h1>
             <p className="hero-copy">Digital creator blending precision with imagination.</p>
           </div>
           <div className="hero-role" aria-labelledby="role-title">
-            <p className="eyebrow">What I do</p>
-            <h2 id="role-title">Game Developer</h2>
-            <p className="hero-copy">I create engaging interactive experiences, game systems, and polished digital worlds.</p>
+            <p className="eyebrow">I am a</p>
             <TypingRoles />
+            <p className="hero-copy">I work with Blender, Unreal Engine, and Substance Painter to create these high-quality assets that bring games to life.</p>
           </div>
         </div>
       </section>
 
       <section className="home-section skills-section" aria-labelledby="skills-title">
         <div className="section-heading">
-          <p className="eyebrow">Skills / Tools I Work With</p>
           <h2 id="skills-title">Tools I create with.</h2>
         </div>
         <div className="skills-card" aria-label="Core skills">
@@ -44,7 +41,7 @@ export default function HomePage() {
         <div className="home-about-copy">
           <p className="eyebrow">About me</p>
           <h2 id="home-about-title">Creating worlds worth exploring.</h2>
-          <p>I am a game developer and digital creator who blends gameplay, design, and high-quality assets to make immersive interactive experiences.</p>
+          <p>I have Fun designing immersive game elements- from gameplay  systems to character design, while also creating high quality assets that bring those worlds to life.</p>
           <Link className="hero-action cursor-target" to="/about">More About Me</Link>
         </div>
       </section>

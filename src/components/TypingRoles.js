@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const roles = ['Game Developer', 'Game Artist', 'Game Designer'];
+const roles = ['Game Developer', 'Game Artist'];
 
 export default function TypingRoles() {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -11,13 +11,14 @@ export default function TypingRoles() {
     const currentRole = roles[roleIndex];
     const completed = letterCount === currentRole.length;
     const empty = letterCount === 0;
-    const delay = deleting ? 45 : completed ? 1350 : 92;
+    const delay = deleting ? 35 : completed ? 2000 : 55;
 
     const timer = window.setTimeout(() => {
-      if (completed) setDeleting(true);
-      else if (deleting && empty) {
+      if (deleting && empty) {
         setDeleting(false);
         setRoleIndex((index) => (index + 1) % roles.length);
+      } else if (!deleting && completed) {
+        setDeleting(true);
       } else setLetterCount((count) => count + (deleting ? -1 : 1));
     }, delay);
 
@@ -25,8 +26,7 @@ export default function TypingRoles() {
   }, [deleting, letterCount, roleIndex]);
 
   return (
-    <p className="typing-role" aria-label={`I am a ${roles[roleIndex]}`}>
-      <span>I am a</span>
+    <p className="typing-role" aria-label={roles[roleIndex]}>
       <strong>{roles[roleIndex].slice(0, letterCount)}<i aria-hidden="true" /></strong>
     </p>
   );

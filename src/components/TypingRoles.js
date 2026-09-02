@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const roles = ['Game Developer', 'Game Artist'];
-
+const roles = ['Game Developer', 'Game Artist','Game Designer',]
 export default function TypingRoles() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [letterCount, setLetterCount] = useState(0);

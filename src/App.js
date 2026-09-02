@@ -8,6 +8,7 @@ import TargetCursor from './components/TargetCursor';
 const HomePage = lazy(() => import('./pages/HomePage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));
+const ProjectDetailPage = lazy(() => import('./pages/ProjectDetailPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const CvPage = lazy(() => import('./pages/CvPage'));
@@ -34,7 +35,7 @@ function ScrollToTop() {
 function SiteLayout() {
   const location = useLocation();
   const navigate = useNavigate();
-  const activeIndex = navItems.findIndex((item) => item.href === location.pathname);
+  const activeIndex = navItems.findIndex((item) => item.href === location.pathname || (item.href === '/projects' && location.pathname.startsWith('/projects/')));
 
   const goToPage = ({ href }) => {
     if (href === location.pathname) {
@@ -60,6 +61,7 @@ function SiteLayout() {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/projects/:slug" element={<ProjectDetailPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/cv" element={<CvPage />} />

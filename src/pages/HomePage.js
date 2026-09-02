@@ -1,5 +1,8 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import TypingRoles from '../components/TypingRoles';
+import { projects } from '../data/projects';
+import ProjectCard from '../components/ProjectCard';
 
 const skills = [
   ['◈', 'Blender'],
@@ -10,6 +13,11 @@ const skills = [
 ];
 
 export default function HomePage() {
+  const [selectedTool, setSelectedTool] = useState(null);
+  const matchingProjects = selectedTool
+    ? projects.filter((project) => project.tools.some((tool) => tool.toLowerCase().includes(selectedTool.toLowerCase())))
+    : [];
+
   return (
     <div id="home">
       <section className="hero-section page-enter" aria-labelledby="hero-title">
@@ -32,8 +40,20 @@ export default function HomePage() {
         </div>
         <div className="skills-card" aria-label="Core skills">
           <div className="skills-grid" role="list">
-            {skills.map(([icon, skill]) => <div className="skill-item" role="listitem" key={skill}><span aria-hidden="true">{icon}</span>{skill}</div>)}
+            {skills.map(([icon, skill]) => (
+              <div role="listitem" key={skill}>
+                <button className={`skill-item cursor-target ${selectedTool === skill ? 'is-selected' : ''}`} type="button" onClick={() => setSelectedTool(selectedTool === skill ? null : skill)} aria-pressed={selectedTool === skill}>
+                  <span aria-hidden="true">{icon}</span>{skill}
+                </button>
+              </div>
+            ))}
           </div>
+          {selectedTool && (
+            <div className="skill-filter-results" aria-live="polite">
+              <p className="skill-filter-title">Projects made with {selectedTool}</p>
+              {matchingProjects.length ? <div className="projects-grid skills-projects-grid">{matchingProjects.map((project) => <ProjectCard project={project} key={project.slug} />)}</div> : <p className="skill-filter-empty">No projects added for this tool yet.</p>}
+            </div>
+          )}
         </div>
       </section>
 

@@ -13,14 +13,12 @@ export default function ProjectDetailPage() {
     <article className="project-detail page-enter">
       <Link className="project-back cursor-target" to="/projects">← All projects</Link>
       <div className={`project-detail-hero ${project.accent}`}>
-        <video autoPlay muted loop playsInline poster="">
+        <video autoPlay muted loop playsInline poster={project.coverImage || ''}>
           <source src={project.video} type={project.videoType || 'video/mp4'} />
         </video>
         <div className="project-detail-shade" />
         <div className="project-detail-title">
-          <p className="eyebrow">Selected project</p>
           <h1>{project.title}</h1>
-          <p>{project.discipline}</p>
         </div>
       </div>
       <div className="project-detail-content">
@@ -31,6 +29,7 @@ export default function ProjectDetailPage() {
           {project.outcome && <section><p className="eyebrow">Outcome</p><p className="project-body-copy">{project.outcome}</p></section>}
         </div>
         <aside className="project-facts" aria-label="Project details">
+          {project.status && <div><span>Project status</span><strong>{project.status}</strong></div>}
           <div><span>Tools</span><strong>{project.tools.join(' · ')}</strong></div>
         </aside>
       </div>

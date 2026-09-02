@@ -3,7 +3,7 @@ export const projects = [
     slug: 'japanese-street',
     title: 'Japanese Street',
     discipline: 'Semi-Realistic Environment Design',
-    duration: 'Completed',
+   
     engine: 'Unreal Engine 5',
     description: 'An empty Japanese street environment that balances realistic detail with artistic storytelling.',
     overview: 'This independent artwork was created to test my skills in semi-realistic environment design. I modeled assets in Blender, textured them in Substance Painter, and assembled the full scene in Unreal Engine. To enhance the atmosphere and composition, I incorporated decals and props, aiming to capture the essence of an empty Japanese street in the afternoon while balancing realism with artistic storytelling and technical accuracy.',
@@ -13,6 +13,7 @@ export const projects = [
     status: 'Completed',
     role: 'Environment Artist',
     tools: ['Unreal Engine 5', 'Blender', 'Substance Painter'],
+    coverImage: '/japanese-street/HighresScreenshot00003.png',
     images: [
       'HighresScreenshot00003.png', 'HighresScreenshot00005.png', 'HighresScreenshot00006.png',
       'HighresScreenshot00008.png', 'HighresScreenshot00011.png', 'HighresScreenshot00013.png',

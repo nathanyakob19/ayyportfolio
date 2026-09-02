@@ -18,7 +18,7 @@ export default function ProjectDetailPage() {
         </video>
         <div className="project-detail-shade" />
         <div className="project-detail-title">
-          <h1>{project.title}</h1>
+          <h1 className={project.slug === 'japanese-street' ? 'electroharmonix-title' : undefined}>{project.title}</h1>
         </div>
       </div>
       <div className="project-detail-content">

@@ -1,0 +1,23 @@
+Project Name: Galaxy Shooter
+Software Used: Unity (C# scripting)
+Project Status: Completed
+
+About Project  
+Galaxy Shooter is a 2D solo‑developed space shooter game, where you control a spaceship and your main objective is to shoot or dodge enemy ships heading your way. The player can fire lasers with the spacebar key. If your spaceship comes in contact with the enemy ship, it costs you one life. You have 3 lives when you start the game. I incorporated a powerup system, through which your spaceship can get temporary boosts, if it comes in contact with the power ups that spawn occasionally. There are three types of power ups: Triple‑Shot (fires three lasers at once for a short period of time), Speed (temporarily increases ship speed), and Shield (protects the ship from one collision). The game tracks score based on enemies destroyed (10 points per enemy). Additional mechanics include screen‑wrapping, a restart button, and a start menu UI leading into the gameplay loop. The project was developed to master Unity fundamentals and C# scripting, implementing player movement, collision detection, dynamic spawning, and game state logic.
+
+Challenges  
+Initially, enemies only spawned from a single fixed position instead of random locations. This limited gameplay variety and made the experience predictable. I solved this by reaching out to the Unity community on Discord, where someone explained that the enemy spawn logic in my script was running after the SpawnManager’s routine, causing the issue. With their guidance, I corrected the spawn logic to use randomized positions along the x‑axis.
+
+Takeaways  
+This project emphasized the importance of debugging script execution order and reinforced how community support can accelerate problem‑solving. It also highlighted the value of randomization in enemy spawning for replayability and challenge.
+
+Outcome  
+The final game demonstrates my ability to implement core mechanics in Unity, design functional UI systems, and troubleshoot scripting issues. It reflects both technical execution and gameplay design, resulting in a cohesive and engaging 2D space shooter experience.
+
+
+
+I am sending you the gameplay video via drive. Edit it out from the middle for a few seconds, for the hovering video.... Use the whole video to showcase the gameplay video.
+
+
+These attachments below are for the error that occured. I'll be giving you captions for these pictures and the video once everything is placed properly.  
+

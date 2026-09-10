@@ -1,21 +1,55 @@
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link, useParams } from 'react-router-dom';
 import { projects } from '../data/projects';
 
 export default function ProjectDetailPage() {
   const { slug } = useParams();
   const project = projects.find((item) => item.slug === slug);
+  const [activeImageIndex, setActiveImageIndex] = useState(null);
+
+  useEffect(() => {
+    setActiveImageIndex(null);
+  }, [slug]);
+
+  useEffect(() => {
+    if (activeImageIndex === null || !project?.images?.length) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') setActiveImageIndex(null);
+      if (event.key === 'ArrowLeft') setActiveImageIndex((index) => (index - 1 + project.images.length) % project.images.length);
+      if (event.key === 'ArrowRight') setActiveImageIndex((index) => (index + 1) % project.images.length);
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [activeImageIndex, project]);
+
+  useEffect(() => {
+    if (activeImageIndex === null) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = previousOverflow; };
+  }, [activeImageIndex]);
 
   if (!project) {
     return <section className="page-section page-enter"><p className="eyebrow">Not found</p><h1>Project unavailable.</h1><Link className="hero-action cursor-target" to="/projects">Back to projects</Link></section>;
   }
 
+  const mediaPath = project.mediaPath || `/${project.slug}`;
+  const storySections = [
+    { key: 'overview', label: 'About project', heading: 'A world with a story in every detail.', copy: project.overview },
+    { key: 'challenge', label: 'Challenges', copy: project.challenge },
+    { key: 'takeaway', label: 'Takeaways', copy: project.takeaway },
+    { key: 'outcome', label: 'Outcome', copy: project.outcome },
+  ].filter((section) => section.copy);
+
   return (
     <article className="project-detail page-enter">
       <Link className="project-back cursor-target" to="/projects">← All projects</Link>
       <div className={`project-detail-hero ${project.accent}`}>
-        <video autoPlay muted loop playsInline poster={project.coverImage || ''}>
-          <source src={project.video} type={project.videoType || 'video/mp4'} />
-        </video>
+        {project.video ? <video autoPlay muted loop playsInline preload="auto" poster={project.coverImage || ''} onCanPlay={(event) => event.currentTarget.play().catch(() => {})}><source src={project.video} type={project.videoType || 'video/mp4'} /></video> : <img src={project.coverImage} alt="" />}
         <div className="project-detail-shade" />
         <div className="project-detail-title">
           <h1 className={project.slug === 'japanese-street' ? 'electroharmonix-title' : undefined}>{project.title}</h1>
@@ -23,10 +57,7 @@ export default function ProjectDetailPage() {
       </div>
       <div className="project-detail-content">
         <div className="project-story">
-          <section><p className="eyebrow">About project</p><h2>A world with a story in every detail.</h2><p className="project-body-copy">{project.overview}</p></section>
-          {project.challenge && <section><p className="eyebrow">Challenges</p><p className="project-body-copy">{project.challenge}</p></section>}
-          {project.takeaway && <section><p className="eyebrow">Takeaways</p><p className="project-body-copy">{project.takeaway}</p></section>}
-          {project.outcome && <section><p className="eyebrow">Outcome</p><p className="project-body-copy">{project.outcome}</p></section>}
+          {storySections.map((section) => <section className="project-story-section" key={section.key}><div><p className="eyebrow">{section.label}</p>{section.heading && <h2>{section.heading}</h2>}<p className="project-body-copy">{section.copy}</p></div>{project.sectionImages?.[section.key] && <button className="project-story-image cursor-target" type="button" onClick={() => setActiveImageIndex(project.images.indexOf(project.sectionImages[section.key]))} aria-label={`Open ${section.label.toLowerCase()} image`}><img src={`${mediaPath}/${project.sectionImages[section.key]}`} alt={`${project.title} — ${section.label.toLowerCase()}`} loading="lazy" /></button>}</section>)}
         </div>
         <aside className="project-facts" aria-label="Project details">
           {project.status && <div><span>Project status</span><strong>{project.status}</strong></div>}
@@ -38,13 +69,22 @@ export default function ProjectDetailPage() {
           <div className="project-gallery-heading"><p className="eyebrow">Gallery</p><h2 id="gallery-title">{project.title}</h2></div>
           <div className="project-gallery-grid">
             {project.images.map((image, index) => (
-              <figure key={image} className="project-gallery-item cursor-target">
-                <img src={`/japanese-street/${image}`} alt={`${project.title} environment screenshot ${index + 1}`} loading="lazy" />
+              <figure key={image} className="project-gallery-item">
+                <button className="project-gallery-open cursor-target" type="button" onClick={() => setActiveImageIndex(index)} aria-label={`Open image ${index + 1} of ${project.images.length}`}><img src={`${mediaPath}/${image}`} alt={`${project.title} environment screenshot ${index + 1}`} loading="lazy" /></button>
               </figure>
             ))}
           </div>
         </section>
       )}
+      {activeImageIndex !== null && createPortal((
+        <div className="gallery-lightbox" role="dialog" aria-modal="true" aria-label={`${project.title} image viewer`}>
+          <button className="gallery-lightbox-close cursor-target" type="button" onClick={() => setActiveImageIndex(null)} aria-label="Close image viewer">X</button>
+          <button className="gallery-lightbox-nav gallery-lightbox-prev cursor-target" type="button" onClick={() => setActiveImageIndex((index) => (index - 1 + project.images.length) % project.images.length)} aria-label="Previous image">‹</button>
+          <img src={`${mediaPath}/${project.images[activeImageIndex]}`} alt={`${project.title} environment screenshot ${activeImageIndex + 1}`} />
+          <button className="gallery-lightbox-nav gallery-lightbox-next cursor-target" type="button" onClick={() => setActiveImageIndex((index) => (index + 1) % project.images.length)} aria-label="Next image">›</button>
+          <p className="gallery-lightbox-count">{activeImageIndex + 1} / {project.images.length}</p>
+        </div>
+      ), document.body)}
     </article>
   );
 }

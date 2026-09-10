@@ -14,7 +14,7 @@ export default function ProjectCard({ project }) {
   return (
     <Link className={`project-card ${project.accent} cursor-target`} to={`/projects/${project.slug}`} onMouseEnter={playPreview} onMouseLeave={stopPreview} onFocus={playPreview} onBlur={stopPreview}>
       <div className="project-preview">
-        <video ref={videoRef} muted loop playsInline preload="metadata" poster={project.coverImage} aria-hidden="true"><source src={project.video} type={project.videoType || 'video/mp4'} /></video>
+        {project.video ? <video ref={videoRef} muted loop playsInline preload="metadata" poster={project.coverImage} aria-hidden="true"><source src={project.video} type={project.videoType || 'video/mp4'} /></video> : <img src={project.coverImage} alt="" aria-hidden="true" />}
         <div className="project-preview-fallback" aria-hidden="true" />
       </div>
       <div className="project-card-info">
@@ -23,7 +23,7 @@ export default function ProjectCard({ project }) {
           <span>⌁ {project.engine}</span>
         </div>
         <h2>{project.title} <span aria-hidden="true">↗</span></h2>
-        <p>{project.description}</p>
+        <p>{project.description}</p>{project.progressNote && <span className="project-progress-note">{project.progressNote}</span>}
       </div>
     </Link>
   );

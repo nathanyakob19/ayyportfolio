@@ -14,7 +14,7 @@ export const projects = [{
     tools: ['Unreal Engine 5', 'Blender', 'Substance Painter'],
     coverImage: '/japanese-street/thambnail.png',
     images: [
-       'para1.png', 'para2.png', 'para3.png', 'para4.png', 'para5.png',
+      'thambnail.png', '1.png', '3.png', '4.png', 'para1.png', 'para2.png', 'para3.png', 'para4.png', 'para5.png',
       'HighresScreenshot00006.png', 'HighresScreenshot00008.png', 'HighresScreenshot00015.png',
       'HighresScreenshot00018.png', 'HighresScreenshot00019.png', 'HighresScreenshot00020.png',
       'HighresScreenshot00021.png', 'HighresScreenshot00022.png', 'HighresScreenshot00023.png',
@@ -34,7 +34,7 @@ export const projects = [{
   outcome: 'The final kitchen scene strengthened my understanding of realistic interior workflows and shading techniques. It demonstrates my ability to combine modeling, texturing, and scene assembly into a cohesive composition, resulting in a kitchen environment that balances technical execution with atmospheric design.',
   status: 'Completed', role: 'Environment Artist', tools: ['Blender', 'Substance Painter', 'Unreal Engine'],
   coverImage: '/kitchen-scene/thumbnail.png', mediaPath: '/kitchen-scene',
-  images: ['Para1.png', 'para2.png', 'para3.png', 'Para4.png', 'para6.png', 'HighresScreenshot00007.png', 'HighresScreenshot00008.png', 'HighresScreenshot00011 (1).png', 'HighresScreenshot00013 (1).png', 'HighresScreenshot00015 (1).png', 'HighresScreenshot00016.png', 'HighresScreenshot00018 (2).png', 'HighresScreenshot00022 (1).png', 'HighresScreenshot00023 (1).png', 'HighresScreenshot00024 (1).png', 'HighresScreenshot00025 (1).png', 'HighresScreenshot00029 (1).png', 'HighresScreenshot00031.png', 'about.png', 'challenges.png', 'outcome.png', 'takeaway.png'],
+  images: ['thumbnail.png', 'Para1.png', 'para2.png', 'para3.png', 'Para4.png', 'para6.png', 'HighresScreenshot00007.png', 'HighresScreenshot00008.png', 'HighresScreenshot00011 (1).png', 'HighresScreenshot00013 (1).png', 'HighresScreenshot00015 (1).png', 'HighresScreenshot00016.png', 'HighresScreenshot00018 (2).png', 'HighresScreenshot00022 (1).png', 'HighresScreenshot00023 (1).png', 'HighresScreenshot00024 (1).png', 'HighresScreenshot00025 (1).png', 'HighresScreenshot00029 (1).png', 'HighresScreenshot00031.png', 'about.png', 'challenges.png', 'outcome.png', 'takeaway.png'],
   sectionImages: { overview: 'about.png', challenge: 'challenges.png', takeaway: 'takeaway.png', outcome: 'outcome.png' },
   video: '/kitchen-scene/KitchenSceneSq.mp4', videoType: 'video/mp4', accent: 'cyan',
 }, {

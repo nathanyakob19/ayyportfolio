@@ -49,7 +49,7 @@ export default function ProjectDetailPage() {
     <article className="project-detail page-enter">
       <Link className="project-back cursor-target" to="/projects">← All projects</Link>
       <div className={`project-detail-hero ${project.accent}`}>
-        {project.video ? <video autoPlay muted loop playsInline preload="auto" poster={project.coverImage || ''} onCanPlay={(event) => event.currentTarget.play().catch(() => {})}><source src={project.video} type={project.videoType || 'video/mp4'} /></video> : <img src={project.coverImage} alt="" />}
+        {project.video ? <video autoPlay muted loop playsInline preload="auto" poster={project.coverImage || ''} onCanPlay={(event) => event.currentTarget.play().catch(() => {})}><source src={project.video} type={project.videoType || 'video/mp4'} /></video> : project.coverImage && <img src={project.coverImage} alt="" />}
         <div className="project-detail-shade" />
         <div className="project-detail-title">
           <h1 className={project.slug === 'japanese-street' ? 'electroharmonix-title' : undefined}>{project.title}</h1>

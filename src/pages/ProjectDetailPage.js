@@ -39,7 +39,7 @@ export default function ProjectDetailPage() {
 
   const mediaPath = project.mediaPath || `/${project.slug}`;
   const storySections = [
-    { key: 'overview', label: 'About project', heading: 'A world with a story in every detail.', copy: project.overview },
+    { key: 'overview', label: 'About project', heading: project.slug === 'battle-blaster' ? 'A world with a story in every detail.' : undefined, copy: project.overview },
     { key: 'challenge', label: 'Challenges', copy: project.challenge },
     { key: 'takeaway', label: 'Takeaways', copy: project.takeaway },
     { key: 'outcome', label: 'Outcome', copy: project.outcome },
@@ -55,14 +55,20 @@ export default function ProjectDetailPage() {
           <h1 className={project.slug === 'japanese-street' ? 'electroharmonix-title' : undefined}>{project.title}</h1>
         </div>
       </div>
-      <div className="project-detail-content">
-        <div className="project-story">
-          {storySections.map((section) => <section className="project-story-section" key={section.key}><div><p className="eyebrow">{section.label}</p>{section.heading && <h2>{section.heading}</h2>}<p className="project-body-copy">{section.copy}</p></div>{project.sectionImages?.[section.key] && <button className="project-story-image cursor-target" type="button" onClick={() => setActiveImageIndex(project.images.indexOf(project.sectionImages[section.key]))} aria-label={`Open ${section.label.toLowerCase()} image`}><img src={`${mediaPath}/${project.sectionImages[section.key]}`} alt={`${project.title} — ${section.label.toLowerCase()}`} loading="lazy" /></button>}</section>)}
-        </div>
-        <aside className="project-facts" aria-label="Project details">
+       <aside className="project-facts" aria-label="Project details">
           {project.status && <div><span>Project status</span><strong>{project.status}</strong></div>}
-          <div><span>Tools</span><strong>{project.tools.join(' · ')}</strong></div>
+          <span> | Tools</span><strong>{project.tools.join(' · ')}</strong>
         </aside>
+      <div className="project-detail-content">
+        
+       
+        <div className="project-story">
+          {storySections.map((section) => {
+            const sectionImages = project.sectionImages?.[section.key];
+            const imageFiles = Array.isArray(sectionImages) ? sectionImages : sectionImages ? [sectionImages] : [];
+            return <section className={`project-story-section${imageFiles.length === 1 ? ' has-single-image' : ''}`} key={section.key}><div><p className="eyebrow">{section.label}</p>{section.heading && <h2>{section.heading}</h2>}<p className="project-body-copy">{section.copy}</p></div>{imageFiles.length > 0 && <div className={`project-story-images${imageFiles.length > 1 ? ' multiple' : ''}`}>{imageFiles.map((imageFile) => <button className="project-story-image cursor-target" key={imageFile} type="button" onClick={() => setActiveImageIndex(project.images.indexOf(imageFile))} aria-label={`Open ${section.label.toLowerCase()} image`}><img src={`${mediaPath}/${imageFile}`} alt={`${project.title} — ${section.label.toLowerCase()}`} loading="lazy" /></button>)}</div>}{section.key === 'overview' && project.overviewContinuation && <p className="project-body-copy">{project.overviewContinuation}</p>}</section>;
+          })}
+        </div>
       </div>
       {project.images?.length > 0 && (
         <section className="project-gallery" aria-labelledby="gallery-title">

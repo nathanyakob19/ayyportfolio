@@ -36,7 +36,7 @@ export default function HomePage() {
 
       <section className="home-section skills-section" aria-labelledby="skills-title">
         <div className="section-heading">
-          <h2 id="skills-title">Tools I create with.</h2>
+          <h2 id="skills-title">Tools I work with.</h2>
         </div>
         <div className="skills-card" aria-label="Core skills">
           <div className="skills-grid" role="list">

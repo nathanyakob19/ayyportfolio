@@ -98,3 +98,5 @@ h2 { font-size: clamp(1.5rem, 3vw, 2.4rem); line-height: 1; margin-bottom: 1rem;
 .project-story-section.has-single-image { align-items: center; grid-template-columns: minmax(0, 1fr) minmax(200px, 280px); }
 .project-story-section.has-single-image .project-story-images { margin: 0; }
 @media (max-width: 780px) { .project-story-section.has-single-image { grid-template-columns: minmax(0, 1fr); } .project-story-section.has-single-image .project-story-images { margin: 1rem auto 0; } }
+.project-preview video, .project-preview img { opacity: 1; }
+.project-preview-fallback, .project-preview::after { display: none; }

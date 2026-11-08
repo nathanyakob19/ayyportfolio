@@ -1,0 +1,22 @@
+Project Name: Moroccan Riad
+Softwares Used: Blender, Substance Painter & Unreal Engine
+Project Status: Ongoing
+
+About Project  
+This project focuses on building a realistic Moroccan riad interior, with the goal of capturing the intricate geometry, decorative details, and atmospheric lighting that define traditional riad architecture. I modeled the structural elements in Blender, textured them in Substance Painter, and attempted to bring the assets into Unreal Engine for assembly.
+
+Challenges  
+The project has been difficult to stabilize. Face orientation errors in Blender created shading problems that were not fully resolved, and mesh exports often failed to transfer correctly into Unreal Engine. UV editing has been a major obstacle — textures appeared correct in Substance Painter but did not display properly once imported into Unreal, suggesting underlying UV issues. Unreal Engine also crashed multiple times during asset imports, preventing successful scene assembly despite repeated attempts.
+
+Takeaways  
+This ongoing work has emphasized the importance of clean mesh preparation and reliable UV workflows before moving assets between software. It has shown how even small orientation or UV errors can cascade into major problems across the pipeline. The repeated failures have reinforced the need for systematic troubleshooting, optimization, and patience when handling complex architectural environments.
+
+Outcome (In Progress)  
+Although the riad has not yet been successfully assembled in Unreal Engine, the project has already deepened my understanding of cross‑software asset pipelines and highlighted critical areas for improvement in UV editing and export reliability. It remains a work in progress, with the next steps focused on stabilizing imports and achieving consistent texture display.
+
+
+Add a label below the description- 
+
+Work in progress 
+
+Then add the pictures 

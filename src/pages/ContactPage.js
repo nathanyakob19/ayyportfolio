@@ -3,7 +3,7 @@ export default function ContactPage() {
     <section className="contact-page page-enter" aria-labelledby="contact-title">
       <div className="contact-intro"><p className="eyebrow">Let&apos;s create</p><h1 id="contact-title">Bring the next world to life.</h1><p className="page-lead">Have a project, a collaboration, or an idea in mind? Let&apos;s talk.</p></div>
       <div className="contact-layout">
-        <form className="contact-form" name="contact" method="POST" data-netlify="true">
+        <form className="contact-form" name="contact" method="POST" action="/" data-netlify="true">
           <input type="hidden" name="form-name" value="contact" />
           <label>Name<input type="text" name="name" placeholder="Your name" /></label>
           <label>Email<input type="email" name="email" placeholder="you@example.com" /></label>

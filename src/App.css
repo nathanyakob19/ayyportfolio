@@ -530,4 +530,14 @@ h2 { font-size: clamp(1.5rem, 3vw, 2.4rem); line-height: 1; margin-bottom: 1rem;
   .battle-blaster-detail .project-story-section.section-overview .project-story-images.multiple {
     width: 100%;
   }
+
+  .galaxy-shooter-detail .project-story-section.section-overview {
+    align-items: center;
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 480px);
+  }
+
+  .galaxy-shooter-detail .project-story-section.section-overview .project-story-images.multiple {
+    grid-template-columns: 1fr;
+    width: 480px;
+  }
 }

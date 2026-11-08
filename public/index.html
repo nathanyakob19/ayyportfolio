@@ -28,6 +28,13 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <form name="contact" method="POST" data-netlify="true" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <select name="role[]" multiple><option value="leader">Leader</option><option value="follower">Follower</option></select>
+      <textarea name="message"></textarea>
+    </form>
     <div id="root"></div>
     <!--
       This HTML file is a template.

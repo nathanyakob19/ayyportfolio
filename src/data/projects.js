@@ -56,7 +56,7 @@ export const projects = [{
   takeaway: 'This project emphasized the importance of debugging script execution order and reinforced how community support can accelerate problem-solving. It also highlighted the value of randomization in enemy spawning for replayability and challenge.',
   outcome: 'The final game demonstrates my ability to implement core mechanics in Unity, design functional UI systems, and troubleshoot scripting issues. It reflects both technical execution and gameplay design, resulting in a cohesive and engaging 2D space shooter experience.',
   status: 'Completed', role: 'Game Developer', tools: ['Unity', 'C#'],
-  coverImage: '/Galaxy Shooter/THUMNAIL.png', mediaPath: '/Galaxy Shooter', images: ['Screenshot 2026-10-24 192812.png', 'Screenshot 2026-10-24 192838.png', 'challenges 1 (1).png', 'aboutm].png', 'about 1.png', 'outcome.png', 'takeaway.png', 'THUMNAIL.png'], videos: ['CHALLENGES.mp4', 'GalaxyShooter.mp4'],
+  coverImage: '/Galaxy Shooter/THUMNAIL.png', mediaPath: '/Galaxy Shooter', images: ['Screenshot 2026-10-24 192812.png', 'Screenshot 2026-10-24 192838.png', 'challenges 1 (1).png', 'aboutm].png', 'about 1.png', 'outcome.png', 'takeaway.png', 'THUMNAIL.png'], videos: ['GalaxyShooter.mp4'],
   sectionImages: { overview: ['aboutm].png', 'about 1.png'], challenge: 'challenges 1 (1).png', takeaway: 'takeaway.png', outcome: 'outcome.png' },
   sectionVideos: { challenge: 'CHALLENGES.mp4' },
   video: '/Galaxy Shooter/THUMBNAILVID.mp4', videoType: 'video/mp4', accent: 'cyan',

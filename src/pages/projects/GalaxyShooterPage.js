@@ -20,7 +20,7 @@ const project = {
     'challenges 1 (1).png', 'aboutm].png', 'about 1.png', 'outcome.png', 'takeaway.png',
     'THUMNAIL.png',
   ],
-  videos: ['CHALLENGES.mp4', 'GalaxyShooter.mp4'],
+  videos: ['GalaxyShooter.mp4'],
   sectionImages: {
     overview: ['aboutm].png', 'about 1.png'],
     challenge: 'challenges 1 (1).png',

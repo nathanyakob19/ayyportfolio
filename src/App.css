@@ -528,6 +528,7 @@ h2 { font-size: clamp(1.5rem, 3vw, 2.4rem); line-height: 1; margin-bottom: 1rem;
 .blog-card-content h2 { margin: 0; }
 .blog-card-content h2 a { color: inherit; text-decoration: none; }
 .blog-card-content h2 a:hover { color: #4ecdc4; }
+.blog-card time, .blog-date { color: #bcb7ad; font-size: .8rem; }
 .blog-card-content p, .blog-body { color: #d6d1c6; margin: 0; white-space: pre-wrap; }
 .blog-body { border-top: 1px solid rgb(255 255 255 / .12); padding-top: 1rem; }
 .blog-back { color: #4ecdc4; display: inline-block; margin-bottom: 2rem; text-decoration: none; }

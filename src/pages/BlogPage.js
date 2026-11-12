@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const API = process.env.REACT_APP_API_URL || '';
+const postDate = (post) => post.createdAt ? new Intl.DateTimeFormat('en', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(post.createdAt * 1000)) : '';
 
 function BlogCard({ post }) {
   const identifier = post.slug || post.id;
-  return <article className="blog-card cursor-target"><div className="blog-card-content"><span>Blog post</span><h2><Link to={`/blog/${identifier}`}>{post.title}</Link></h2></div></article>;
+  return <article className="blog-card cursor-target"><div className="blog-card-content"><span>Blog post</span><h2><Link to={`/blog/${identifier}`}>{post.title}</Link></h2>{postDate(post) && <time dateTime={new Date(post.createdAt * 1000).toISOString()}>{postDate(post)}</time>}</div></article>;
 }
 
 export default function BlogPage() {

@@ -523,12 +523,16 @@ h2 { font-size: clamp(1.5rem, 3vw, 2.4rem); line-height: 1; margin-bottom: 1rem;
 /* Public blog posts saved through the owner dashboard. */
 .blog-grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 2rem; }
 .blog-card { background: rgb(255 255 255 / .06); border: 1px solid rgb(255 255 255 / .14); border-radius: 12px; overflow: hidden; }
-.blog-card > img { display: block; height: auto; max-height: 260px; object-fit: contain; width: 100%; }
 .blog-card-content { display: grid; gap: .8rem; padding: 1.3rem; }
 .blog-card-content span, .blog-status { color: #4ecdc4; font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .blog-card-content h2 { margin: 0; }
+.blog-card-content h2 a { color: inherit; text-decoration: none; }
+.blog-card-content h2 a:hover { color: #4ecdc4; }
 .blog-card-content p, .blog-body { color: #d6d1c6; margin: 0; white-space: pre-wrap; }
 .blog-body { border-top: 1px solid rgb(255 255 255 / .12); padding-top: 1rem; }
+.blog-back { color: #4ecdc4; display: inline-block; margin-bottom: 2rem; text-decoration: none; }
+.blog-detail { max-width: 900px; }
+.blog-detail-body { color: #e2ddd3; font-size: 1.06rem; line-height: 1.85; margin-top: 2rem; white-space: pre-wrap; }
 
 /* Give paragraph-section images more room without changing their aspect ratio. */
 @media (min-width: 781px) {

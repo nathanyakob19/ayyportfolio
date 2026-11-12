@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const API = process.env.REACT_APP_API_URL || '';
 
 function BlogCard({ post }) {
-  return <article className="blog-card cursor-target">{post.coverImage && <img src={`${API}${post.coverImage}`} alt="" />}<div className="blog-card-content"><span>Blog post</span><h2>{post.title}</h2>{post.excerpt && <p>{post.excerpt}</p>}{post.body && <div className="blog-body">{post.body}</div>}</div></article>;
+  const identifier = post.slug || post.id;
+  return <article className="blog-card cursor-target"><div className="blog-card-content"><span>Blog post</span><h2><Link to={`/blog/${identifier}`}>{post.title}</Link></h2></div></article>;
 }
 
 export default function BlogPage() {
@@ -16,5 +18,5 @@ export default function BlogPage() {
     return () => { active = false; };
   }, []);
 
-  return <section className="page-section page-enter" aria-labelledby="blog-title"><p className="eyebrow">Notes & process</p><h1 id="blog-title">Blog</h1><p className="page-lead">Development notes, game-art explorations, and project insights.</p>{loading ? <p className="blog-status">Loading posts…</p> : posts.length ? <div className="blog-grid">{posts.map((post) => <BlogCard key={post.id} post={post} />)}</div> : <div className="future-grid"><article className="future-card"><span>Coming soon</span><h2>No published posts yet</h2><p>New notes and process updates will appear here.</p></article></div>}</section>;
+  return <section className="page-section page-enter" aria-labelledby="blog-title"><p className="eyebrow">Notes & process</p><h1 id="blog-title">Blog</h1><p className="page-lead">Choose a post to read the full story.</p>{loading ? <p className="blog-status">Loading posts...</p> : posts.length ? <div className="blog-grid">{posts.map((post) => <BlogCard key={post.id} post={post} />)}</div> : <div className="future-grid"><article className="future-card"><span>Coming soon</span><h2>No published posts yet</h2><p>New notes and process updates will appear here.</p></article></div>}</section>;
 }

@@ -9,6 +9,7 @@ const HomePage = lazy(() => import('./pages/HomePage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
+const BlogDetailPage = lazy(() => import('./pages/BlogDetailPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const CvPage = lazy(() => import('./pages/CvPage'));
 const AdminPage = lazy(() => import('./pages/AdminPage'));
@@ -84,6 +85,7 @@ function SiteLayout() {
             <Route path="/projects/japanese-shrine"  element={<JapaneseShinePage />} />
 
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:postId" element={<BlogDetailPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/cv" element={<CvPage />} />
             <Route path="/admin" element={<AdminPage />} />

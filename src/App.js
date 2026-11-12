@@ -40,6 +40,11 @@ function ScrollToTop() {
   return null;
 }
 
+function HomeOrAdmin() {
+  const { search } = useLocation();
+  return new URLSearchParams(search).get('admin') === '1' ? <AdminPage /> : <HomePage />;
+}
+
 function SiteLayout() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -66,7 +71,7 @@ function SiteLayout() {
       <main>
         <Suspense fallback={<div className="page-loading">Loading portfolio…</div>}>
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<HomeOrAdmin />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
 

@@ -70,6 +70,10 @@ h2 { font-size: clamp(1.5rem, 3vw, 2.4rem); line-height: 1; margin-bottom: 1rem;
 .contact-form input, .contact-form textarea, .contact-form select { background: rgb(255 255 255 / .08); border: 1px solid rgb(255 255 255 / .15); border-radius: 6px; color: #f8f5ee; font: inherit; padding: .9rem 1rem; resize: vertical; }
 .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { border-color: #4ecdc4; outline: none; }
 .contact-form .hero-action { justify-self: start; margin-top: .3rem; }
+.form-status { border-radius: 8px; font-size: .9rem; margin: 0; padding: .75rem .9rem; }
+.form-status.success { background: #dcfce7; color: #15803d; }
+.form-status.error { background: #fee2e2; color: #b91c1c; }
+.contact-form button:disabled { cursor: not-allowed; opacity: .6; }
 .contact-details { display: grid; align-content: start; gap: 2.2rem; }
 .contact-details > div { display: grid; gap: .65rem; }
 .contact-details p, .contact-details a { color: #d6d1c6; line-height: 1.7; text-decoration: none; }
@@ -398,6 +402,19 @@ h2 { font-size: clamp(1.5rem, 3vw, 2.4rem); line-height: 1; margin-bottom: 1rem;
     grid-template-columns: 380px minmax(0, 1fr);
   }
 }
+
+/* Owner content studio */
+.admin-page { margin: 0 auto; max-width: 1240px; min-height: calc(100vh - 5.1rem); padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 4vw, 3rem); }
+.admin-login { background: rgb(255 255 255 / .07); border: 1px solid rgb(255 255 255 / .15); border-radius: 16px; display: grid; gap: 1rem; margin: 0 auto; max-width: 470px; padding: clamp(1.5rem, 4vw, 2.5rem); }
+.admin-login label, .admin-editor label { color: #d6d1c6; display: grid; font-size: .78rem; font-weight: 800; gap: .45rem; letter-spacing: .08em; text-transform: uppercase; }
+.admin-login input, .admin-editor input, .admin-editor textarea { background: rgb(255 255 255 / .08); border: 1px solid rgb(255 255 255 / .15); border-radius: 6px; color: #f8f5ee; font: inherit; padding: .75rem .85rem; }
+.admin-login input:focus, .admin-editor input:focus, .admin-editor textarea:focus { border-color: #4ecdc4; outline: 0; }
+.admin-heading, .admin-tabs, .admin-editor-heading { align-items: center; display: flex; gap: 1rem; justify-content: space-between; }
+.admin-heading { margin-bottom: 2rem; }.admin-heading h1 { font-size: clamp(2.8rem, 6vw, 5rem); margin-bottom: .7rem; }.admin-heading p:not(.eyebrow) { color: #d6d1c6; margin: 0; }
+.admin-tabs { border-bottom: 1px solid rgb(255 255 255 / .15); justify-content: flex-start; margin-bottom: 1.5rem; padding-bottom: 1rem; }.admin-tabs button, .admin-text-button, .admin-list button, .admin-delete { background: transparent; border: 1px solid rgb(255 255 255 / .18); border-radius: 999px; color: #f8f5ee; cursor: pointer; font: inherit; padding: .55rem .9rem; }.admin-tabs button.is-active { background: #f8f5ee; color: #101010; }.admin-tabs button:last-child { margin-left: auto; }
+.admin-layout { display: grid; gap: 1.5rem; grid-template-columns: minmax(220px, .38fr) minmax(0, 1fr); }.admin-list { align-content: start; display: grid; gap: .5rem; }.admin-list h2 { margin-bottom: .4rem; }.admin-list > button { border-radius: 8px; display: grid; gap: .1rem; text-align: left; }.admin-list > button span { color: #4ecdc4; font-size: .72rem; }.admin-list > button.is-selected { background: rgb(78 205 196 / .1); border-color: #4ecdc4; }
+.admin-editor { background: rgb(255 255 255 / .06); border: 1px solid rgb(255 255 255 / .15); border-radius: 12px; display: grid; gap: 1rem; padding: clamp(1rem, 3vw, 2rem); }.admin-editor textarea { min-height: 6rem; resize: vertical; }.admin-editor .admin-body { min-height: 18rem; }.admin-two-col { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }.admin-check { align-items: center; display: flex !important; gap: .6rem !important; }.admin-check input { width: auto; }.admin-preview { border-radius: 8px; max-height: 14rem; max-width: 100%; object-fit: contain; }.admin-delete { border-color: #ff7f6c; color: #ff7f6c; }.admin-notice { background: rgb(78 205 196 / .13); border: 1px solid rgb(78 205 196 / .38); border-radius: 7px; color: #dffbf7; margin: 0 0 1rem; padding: .75rem .9rem; }
+@media (max-width: 780px) { .admin-heading { align-items: flex-start; flex-direction: column; }.admin-tabs { flex-wrap: wrap; }.admin-tabs button:last-child { margin-left: 0; }.admin-layout, .admin-two-col { grid-template-columns: 1fr; } }
 
 @media (max-width: 780px) {
   .project-gallery-grid {

@@ -11,6 +11,7 @@ const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const CvPage = lazy(() => import('./pages/CvPage'));
+const AdminPage = lazy(() => import('./pages/AdminPage'));
 
 // Individual project pages
 const JapaneseStreetPage  = lazy(() => import('./pages/projects/JapaneseStreetPage'));
@@ -80,6 +81,7 @@ function SiteLayout() {
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/cv" element={<CvPage />} />
+            <Route path="/admin" element={<AdminPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Suspense>

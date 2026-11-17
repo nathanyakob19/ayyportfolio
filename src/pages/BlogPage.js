@@ -6,7 +6,9 @@ const postDate = (post) => post.createdAt ? new Intl.DateTimeFormat('en', { day:
 
 function BlogCard({ post }) {
   const identifier = post.slug || post.id;
-  return <article className="blog-card cursor-target"><div className="blog-card-content"><span>Blog post</span><h2><Link to={`/blog/${identifier}`}>{post.title}</Link></h2>{postDate(post) && <time dateTime={new Date(post.createdAt * 1000).toISOString()}>{postDate(post)}</time>}</div></article>;
+  const image = post.coverImage || post.images?.[0];
+  const imageUrl = image?.startsWith('/api/') ? `${API}${image}` : image;
+  return <article className={`blog-card cursor-target${imageUrl ? ' has-image' : ' title-only'}`}><Link className="blog-card-link" to={`/blog/${identifier}`}>{imageUrl && <div className="blog-preview"><img src={imageUrl} alt="" /></div>}<div className="blog-card-content"><span>Blog post</span><h2>{post.title} <b aria-hidden="true">↗</b></h2>{post.excerpt && <p>{post.excerpt}</p>}{postDate(post) && <time dateTime={new Date(post.createdAt * 1000).toISOString()}>{postDate(post)}</time>}</div></Link></article>;
 }
 
 export default function BlogPage() {
@@ -19,5 +21,5 @@ export default function BlogPage() {
     return () => { active = false; };
   }, []);
 
-  return <section className="page-section page-enter" aria-labelledby="blog-title"><p className="eyebrow">Notes & process</p><h1 id="blog-title">Blog</h1><p className="page-lead">Choose a post to read the full story.</p>{loading ? <p className="blog-status">Loading posts...</p> : posts.length ? <div className="blog-grid">{posts.map((post) => <BlogCard key={post.id} post={post} />)}</div> : <div className="future-grid"><article className="future-card"><span>Coming soon</span><h2>No published posts yet</h2><p>New notes and process updates will appear here.</p></article></div>}</section>;
+  return <section className="page-section page-enter" aria-labelledby="blog-title"><p className="eyebrow">Notes & process</p><h1 id="blog-title">Blog</h1><p className="page-lead">Choose a post to read the full story.</p>{loading ? <p className="blog-status">Loading posts...</p> : posts.length ? <div className="projects-grid blog-grid">{posts.map((post) => <BlogCard key={post.id} post={post} />)}</div> : <div className="future-grid"><article className="future-card"><span>Coming soon</span><h2>No published posts yet</h2><p>New notes and process updates will appear here.</p></article></div>}</section>;
 }

@@ -534,6 +534,7 @@ h2 { font-size: clamp(1.5rem, 3vw, 2.4rem); line-height: 1; margin-bottom: 1rem;
 .blog-back { color: #4ecdc4; display: inline-block; margin-bottom: 2rem; text-decoration: none; }
 .blog-detail { max-width: 900px; }
 .blog-detail-body { color: #e2ddd3; font-size: 1.06rem; line-height: 1.85; margin-top: 2rem; white-space: pre-wrap; }
+.cv-actions { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 1.75rem; }.cv-download { align-items: center; border: 1px solid #4ecdc4; color: #4ecdc4; display: inline-flex; font-weight: 800; padding: .85rem 1.2rem; text-decoration: none; }.cv-download:hover, .cv-download:focus-visible { background: #4ecdc4; color: #101010; outline: 0; }.cv-preview { background: rgb(255 255 255 / .06); border: 1px solid rgb(255 255 255 / .14); height: min(72vh, 980px); margin-top: 2rem; overflow: hidden; }.cv-preview iframe { border: 0; height: 100%; width: 100%; }@media (max-width: 600px) { .cv-preview { height: 64vh; } }
 
 /* Give paragraph-section images more room without changing their aspect ratio. */
 @media (min-width: 781px) {

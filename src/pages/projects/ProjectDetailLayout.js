@@ -114,7 +114,7 @@ export default function ProjectDetailLayout({ project }) {
                   <p className="eyebrow">{section.label}</p>
                   {section.heading && <h2>{section.heading}</h2>}
                   <p className="project-body-copy">{section.copy}</p>
-                  {section.key === 'overview' && project.overviewContinuation && project.slug !== 'battle-blaster' && (
+                  {section.key === 'overview' && project.overviewContinuation && (
                     <p className="project-body-copy">{project.overviewContinuation}</p>
                   )}
                 </div>
@@ -148,9 +148,6 @@ export default function ProjectDetailLayout({ project }) {
                       );
                     })}
                   </div>
-                )}
-                {section.key === 'overview' && project.overviewContinuation && project.slug === 'battle-blaster' && (
-                  <p className="project-body-copy">{project.overviewContinuation}</p>
                 )}
               </section>
             );

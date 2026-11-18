@@ -528,7 +528,7 @@ h2 { font-size: clamp(1.5rem, 3vw, 2.4rem); line-height: 1; margin-bottom: 1rem;
 .blog-detail-body { color: #e2ddd3; display: grid; font-size: 1.06rem; gap: 2.25rem; line-height: 1.85; margin-top: 2rem; }
 .blog-content-row { min-width: 0; white-space: pre-wrap; }
 .blog-content-row p { margin: 0; }
-.blog-content-row.has-image { align-items: center; display: grid; gap: 2rem; grid-template-columns: minmax(0, 1fr) minmax(220px, 40%); }
+.blog-content-row.has-image { align-items: start; display: grid; gap: 2rem; grid-template-columns: minmax(0, 1fr) minmax(220px, 40%); }
 .blog-content-row.image-left .blog-content-image { grid-column: 1; grid-row: 1; }
 .blog-content-row.image-left p { grid-column: 2; grid-row: 1; }
 .blog-content-row.image-right p { grid-column: 1; grid-row: 1; }

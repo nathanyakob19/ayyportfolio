@@ -6,7 +6,8 @@ const postDate = (post) => post.createdAt ? new Intl.DateTimeFormat('en', { day:
 
 function BlogCard({ post }) {
   const identifier = post.slug || post.id;
-  const image = post.coverImage || post.images?.[0];
+  // Inline post images belong to the article body, not the card thumbnail.
+  const image = post.coverImage;
   const imageUrl = image?.startsWith('/api/') ? `${API}${image}` : image;
   return <article className={`blog-card cursor-target${imageUrl ? ' has-image' : ' title-only'}`}><Link className="blog-card-link" to={`/blog/${identifier}`}>{imageUrl && <div className="blog-preview"><img src={imageUrl} alt="" /></div>}<div className="blog-card-content"><span>Blog post</span><h2>{post.title} <b aria-hidden="true">↗</b></h2>{post.excerpt && <p>{post.excerpt}</p>}{postDate(post) && <time dateTime={new Date(post.createdAt * 1000).toISOString()}>{postDate(post)}</time>}</div></Link></article>;
 }

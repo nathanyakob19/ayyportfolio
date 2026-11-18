@@ -3,6 +3,24 @@ import { Link, useParams } from 'react-router-dom';
 
 const API = process.env.REACT_APP_API_URL || '';
 const postDate = (post) => post.createdAt ? new Intl.DateTimeFormat('en', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(post.createdAt * 1000)) : '';
+const media = (url) => url?.startsWith('/api/') ? `${API}${url}` : url;
+
+function BlogContent({ body, images }) {
+  const paragraphs = (body || '').split(/\n\s*\n/).map((paragraph) => paragraph.trim()).filter(Boolean);
+  const postImages = Array.isArray(images) ? images.filter(Boolean) : [];
+  const rowCount = Math.max(paragraphs.length, postImages.length);
+
+  if (!rowCount) return null;
+
+  return <div className="blog-detail-body">{Array.from({ length: rowCount }, (_, index) => {
+    const image = postImages[index];
+    const paragraph = paragraphs[index];
+    return <section className={`blog-content-row${image ? ' has-image' : ''}${index % 2 ? ' image-right' : ' image-left'}`} key={`${image || 'text'}-${index}`}>
+      {image && <img className="blog-content-image" src={media(image)} alt="" />}
+      {paragraph && <p>{paragraph}</p>}
+    </section>;
+  })}</div>;
+}
 
 export default function BlogDetailPage() {
   const { postId } = useParams();
@@ -21,5 +39,5 @@ export default function BlogDetailPage() {
   if (loading) return <section className="page-section page-enter"><p className="blog-status">Loading post...</p></section>;
   if (!post) return <section className="page-section page-enter"><p className="eyebrow">Blog</p><h1>Post not found</h1><Link className="hero-action" to="/blog">Back to blog</Link></section>;
 
-  return <article className="page-section page-enter blog-detail"><Link className="blog-back" to="/blog">← Back to blog</Link><p className="eyebrow">Blog post</p><h1>{post.title}</h1>{postDate(post) && <time className="blog-date" dateTime={new Date(post.createdAt * 1000).toISOString()}>Posted {postDate(post)}</time>}{post.excerpt && <p className="page-lead">{post.excerpt}</p>}{post.body && <div className="blog-detail-body">{post.body}</div>}</article>;
+  return <article className="page-section page-enter blog-detail"><Link className="blog-back" to="/blog">← Back to blog</Link><p className="eyebrow">Blog post</p><h1>{post.title}</h1>{postDate(post) && <time className="blog-date" dateTime={new Date(post.createdAt * 1000).toISOString()}>Posted {postDate(post)}</time>}{post.excerpt && <p className="page-lead">{post.excerpt}</p>}<BlogContent body={post.body} images={post.images} /></article>;
 }

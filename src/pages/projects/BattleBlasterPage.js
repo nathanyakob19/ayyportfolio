@@ -17,7 +17,7 @@ const project = {
   coverImage: '/Battle Blaster/THUMBNAIL.png',
   mediaPath: '/Battle Blaster',
   images: [
-    '1.png', '2.png', '6.png', '7.png', 'ABOUT PARA1 2 G6.png', 'ABOUT PARA1 3.png',
+    'ABOUT PARA1 2 G6.png', 'ABOUT PARA1 3.png',
     'ABOUT PARA1 G5.png', 'CHALLENGES.png', 'G7.png', 'HighresScreenshot00001.png',
     'HighresScreenshot00005 (1).png', 'HighresScreenshot00006 (1).png', 'HighresScreenshot00007.png',
     'HighresScreenshot00008 (1).png', 'HighresScreenshot00009.png', 'HighresScreenshot00010.png',

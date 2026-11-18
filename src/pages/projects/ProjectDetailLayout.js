@@ -113,10 +113,7 @@ export default function ProjectDetailLayout({ project }) {
                 <div className="story-text-col">
                   <p className="eyebrow">{section.label}</p>
                   {section.heading && <h2>{section.heading}</h2>}
-                  <p className="project-body-copy">{section.copy}</p>
-                  {section.key === 'overview' && project.overviewContinuation && (
-                    <p className="project-body-copy">{project.overviewContinuation}</p>
-                  )}
+                  <p className="project-body-copy">{section.copy}{section.key === 'overview' && project.overviewContinuation ? ` ${project.overviewContinuation}` : ''}</p>
                 </div>
 
                 {/* Image column */}

@@ -167,9 +167,9 @@ export default function ContactPage() {
             <span>Email</span>
             <a
               className="cursor-target"
-              href="mailto:nathanwaghchoure@gmail.com"
+              href="mailto:abhinavpillai10713@gmail.com"
             >
-              nathanwaghchoure@gmail.com
+             abhinavpillai10713@gmail.com
             </a>
           </div>
 

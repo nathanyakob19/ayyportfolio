@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 const API = process.env.REACT_APP_API_URL || '';
@@ -15,10 +15,10 @@ function BlogContent({ body, images }) {
   return <div className="blog-detail-body">{Array.from({ length: rowCount }, (_, index) => {
     const image = postImages[index];
     const paragraph = paragraphs[index];
-    return <section className={`blog-content-row${image ? ' has-image' : ''}${index % 2 ? ' image-right' : ' image-left'}`} key={`${image || 'text'}-${index}`}>
-      {image && <img className="blog-content-image" src={media(image)} alt="" />}
+    return <Fragment key={`${image || 'text'}-${index}`}>
+      {image && <img className={`blog-content-image image-${index % 2 ? 'right' : 'left'}`} src={media(image)} alt="" />}
       {paragraph && <p>{paragraph}</p>}
-    </section>;
+    </Fragment>;
   })}</div>;
 }
 

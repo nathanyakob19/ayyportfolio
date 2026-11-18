@@ -20,7 +20,6 @@ export default function ContactPage() {
       name: formData.get("name"),
       email: formData.get("email"),
       subject: formData.get("subject"),
-      role: formData.getAll("role"),
       message: formData.get("message"),
       website: formData.get("website")
     };
@@ -132,14 +131,6 @@ export default function ContactPage() {
           </label>
 
           <label>
-            Role
-            <select name="role" multiple>
-              <option value="leader">Leader</option>
-              <option value="follower">Follower</option>
-            </select>
-          </label>
-
-          <label>
             Message
             <textarea
               name="message"
@@ -176,9 +167,9 @@ export default function ContactPage() {
             <span>Email</span>
             <a
               className="cursor-target"
-              href="mailto:abhinavpillai10713@gmail.com"
+              href="mailto:nathanwaghchoure@gmail.com"
             >
-              abhinavpillai10713@gmail.com
+              nathanwaghchoure@gmail.com
             </a>
           </div>
 

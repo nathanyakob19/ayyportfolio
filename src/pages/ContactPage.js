@@ -169,7 +169,7 @@ export default function ContactPage() {
               className="cursor-target"
               href="mailto:nathanwaghchoure@gmail.com"
             >
-           
+
             </a>
             <a
               className="cursor-target"
